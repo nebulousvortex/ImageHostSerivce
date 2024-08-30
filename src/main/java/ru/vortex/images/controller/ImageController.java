@@ -10,10 +10,10 @@ import java.io.IOException;
 
 @RestController()
 @CrossOrigin(origins = {"http://localhost:3000" , "https://leafcity.vercel.app", "https://leafcity.ru"})
-@RequestMapping("/fs")
+@RequestMapping("/images")
 public class ImageController {
 
-    @GetMapping("/images/{path}/{imageName}")
+    @GetMapping("/{path}/{imageName}")
     public ResponseEntity<byte[]> getImage(@PathVariable String imageName, @PathVariable String path) throws IOException {
 
         var imgFile = new ClassPathResource("images/" + path +'/'+ imageName + ".webp");
@@ -23,7 +23,7 @@ public class ImageController {
                 .contentType(MediaType.IMAGE_PNG)
                 .body(bytes);
     }
-    @GetMapping("/images/{path1}/{path2}/{imageName}")
+    @GetMapping("/{path1}/{path2}/{imageName}")
     public ResponseEntity<byte[]> getImage(@PathVariable String imageName, @PathVariable String path1, @PathVariable String path2) throws IOException {
 
         var imgFile = new ClassPathResource("images/" + path1 +'/'+ path2 +'/'+ imageName + ".webp");
