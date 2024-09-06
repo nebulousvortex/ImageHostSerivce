@@ -31,7 +31,7 @@ public class ImageService {
         for (Resource resource : resources) {
             var fileName = Objects.requireNonNull(resource.getFilename()).replace(".webp", "");
             var filePath = "https://leafcity.ru/api/v1/fs/images/" + path + "/" + fileName;
-            images.add(new ImageResponse(filePath, fileName));
+            images.add(new ImageResponse(filePath, fileName.substring(0, fileName.indexOf('-'))));
         }
         return  images;
     }
